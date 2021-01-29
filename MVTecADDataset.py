@@ -1,13 +1,7 @@
-from PIL import Image
 import sys, os, urllib.request, tarfile, cv2
 import numpy as np
-import matplotlib.pyplot as plt
-
+from PIL import Image
 from pathlib import Path
-import urllib.request
-import zipfile
-import random
-
 import torch
 import torch.utils.data as data
 from torchvision import transforms
@@ -47,6 +41,15 @@ def download_AD_dataset(source_path):
 # MVTec AD dataset
 ###
 class ADDataset(data.Dataset):
+   
+    def __init__(self, dir_path, data_name,input_size):
+        super().__init__()
+        
+        self.dir_path = dir_path
+        self.data_name = data_name
+        self.input_size = input_size
+        self.dataLists = self.makeFileList(dir_path,data_name)
+
     def makeFileList(self,dir_path,data_name):
       retList = []
       TopDataFolder = dir_path
@@ -60,17 +63,7 @@ class ADDataset(data.Dataset):
       #     
       #retList =retList +fileList
       #
-      return retList
-
-    def __init__(self, dir_path, data_name,input_size):
-        super().__init__()
-        
-        self.dir_path = dir_path
-        self.data_name = data_name
-        self.input_size = input_size
-        self.dataLists = self.makeFileList(dir_path,data_name)
-
-        
+      return retList   
     def __len__(self):
         return len(self.dataLists)
     
