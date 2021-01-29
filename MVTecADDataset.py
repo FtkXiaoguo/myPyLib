@@ -12,10 +12,10 @@ import torch
 import torch.utils.data as data
 from torchvision import transforms
 
-""""
+"""
 test MVTec AD dataset
 ref: https://github.com/shinmura0/AutoEncoder_vs_MetricLearning/blob/master/L2_vs_Autoencoder.ipynb
-""""
+"""
 
 #########################
 # download data
