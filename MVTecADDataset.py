@@ -12,7 +12,14 @@ import torch
 import torch.utils.data as data
 from torchvision import transforms
 
+""""
+test MVTec AD dataset
+ref: https://github.com/shinmura0/AutoEncoder_vs_MetricLearning/blob/master/L2_vs_Autoencoder.ipynb
+""""
 
+#########################
+# download data
+###
 def download_AD_dataset(source_path):
   download_dir = "./ad"
   save_path = "data/"
@@ -36,6 +43,9 @@ def download_AD_dataset(source_path):
       tar.extractall(save_path)
 
 
+#########################
+# MVTec AD dataset
+###
 class ADDataset(data.Dataset):
     def makeFileList(self,dir_path,data_name):
       retList = []
